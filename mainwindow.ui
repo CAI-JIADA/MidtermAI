@@ -6,122 +6,268 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>850</width>
+    <height>680</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MidtermAI - 時間管理系統</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {
-    background-color: #f5f5f5;
+   <string notr="true">/* 主視窗樣式 - 使用漸層背景增加深度感 */
+QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f8f9fa, stop:1 #e9ecef);
 }
 
+/* 一般標籤樣式 */
 QLabel {
-    color: #333333;
+    color: #495057;
     font-size: 12pt;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
 }
 
+/* 標題標籤 - 增強視覺層次 */
 QLabel#titleLabel {
-    color: #2c3e50;
-    font-size: 18pt;
+    color: #1a1a2e;
+    font-size: 22pt;
     font-weight: bold;
+    padding: 10px;
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #667eea, stop:1 #764ba2);
+    border-radius: 10px;
+    color: white;
+    qproperty-alignment: AlignCenter;
 }
 
+/* 時間選擇器 - 改進邊框和陰影效果 */
 QTimeEdit {
     background-color: white;
-    border: 2px solid #3498db;
-    border-radius: 5px;
-    padding: 5px;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    padding: 8px 12px;
     font-size: 14pt;
-    color: #2c3e50;
+    color: #1a1a2e;
+    selection-background-color: #667eea;
+}
+
+QTimeEdit:hover {
+    border: 2px solid #764ba2;
+    background-color: #f8f9fa;
 }
 
 QTimeEdit:focus {
-    border: 2px solid #2980b9;
+    border: 3px solid #667eea;
+    background-color: white;
 }
 
+QTimeEdit:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    border: 2px solid #ced4da;
+}
+
+/* 按鈕基本樣式 - 使用現代漸層和陰影 */
 QPushButton {
-    background-color: #3498db;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #667eea, stop:1 #764ba2);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    font-size: 11pt;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 12pt;
     font-weight: bold;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
 }
 
 QPushButton:hover {
-    background-color: #2980b9;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #5568d3, stop:1 #6a3d8f);
 }
 
 QPushButton:pressed {
-    background-color: #21618c;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #4a5ac0, stop:1 #5c347c);
+    padding-top: 12px;
+    padding-bottom: 8px;
 }
 
+QPushButton:disabled {
+    background-color: #ced4da;
+    color: #6c757d;
+}
+
+/* 暫停按鈕 - 使用警告色系 */
+QPushButton#pauseButton {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f093fb, stop:1 #f5576c);
+}
+
+QPushButton#pauseButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #e082ea, stop:1 #e4465b);
+}
+
+QPushButton#pauseButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #d071d9, stop:1 #d3354a);
+}
+
+/* 重置按鈕 - 使用危險色系 */
 QPushButton#resetButton {
-    background-color: #e74c3c;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #fa709a, stop:1 #fee140);
 }
 
 QPushButton#resetButton:hover {
-    background-color: #c0392b;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #e95f89, stop:1 #edd02f);
 }
 
+QPushButton#resetButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #d84e78, stop:1 #dcbf1e);
+}
+
+/* 群組框樣式 - 增加陰影和深度 */
 QGroupBox {
     background-color: white;
-    border: 2px solid #bdc3c7;
-    border-radius: 8px;
-    margin-top: 10px;
-    padding-top: 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 20px 15px 15px 15px;
     font-weight: bold;
-    color: #2c3e50;
+    font-size: 11pt;
+    color: #495057;
 }
 
 QGroupBox::title {
     subcontrol-origin: margin;
-    subcontrol-position: top center;
-    padding: 0 10px;
-    color: #2c3e50;
+    subcontrol-position: top left;
+    padding: 5px 15px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #667eea, stop:1 #764ba2);
+    color: white;
+    border-radius: 6px;
+    left: 10px;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
 }
 
+/* 文字編輯器樣式 - 改善邊框和內距 */
 QTextEdit {
     background-color: white;
-    border: 2px solid #95a5a6;
-    border-radius: 5px;
-    padding: 5px;
-    color: #2c3e50;
-    font-size: 10pt;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    color: #495057;
+    font-size: 11pt;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
+    selection-background-color: #667eea;
+    selection-color: white;
 }
 
+QTextEdit:hover {
+    border: 2px solid #adb5bd;
+}
+
+QTextEdit:focus {
+    border: 2px solid #667eea;
+    background-color: #f8f9fa;
+}
+
+/* 進度條樣式 - 使用漸層和動畫效果 */
 QProgressBar {
-    border: 2px solid #bdc3c7;
-    border-radius: 5px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
     text-align: center;
-    background-color: #ecf0f1;
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    font-size: 11pt;
+    height: 30px;
 }
 
 QProgressBar::chunk {
-    background-color: #27ae60;
-    border-radius: 3px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #667eea, stop:0.5 #764ba2, stop:1 #f093fb);
+    border-radius: 6px;
+    margin: 1px;
+}
+
+/* 狀態標籤特殊樣式 */
+QLabel#statusLabel {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #667eea;
+    padding: 8px;
+}
+
+/* 選單樣式優化 */
+QMenuBar {
+    background-color: white;
+    color: #495057;
+    border-bottom: 1px solid #dee2e6;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
+}
+
+QMenuBar::item {
+    padding: 5px 10px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected {
+    background-color: #667eea;
+    color: white;
+    border-radius: 4px;
+}
+
+QMenu {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+QMenu::item {
+    padding: 8px 25px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #667eea;
+    color: white;
+}
+
+/* 狀態列樣式 */
+QStatusBar {
+    background-color: white;
+    color: #6c757d;
+    border-top: 1px solid #dee2e6;
+    font-family: &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, sans-serif;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
-     <number>15</number>
+     <number>20</number>
     </property>
     <property name="leftMargin">
-     <number>20</number>
+     <number>25</number>
     </property>
     <property name="topMargin">
-     <number>20</number>
+     <number>25</number>
     </property>
     <property name="rightMargin">
-     <number>20</number>
+     <number>25</number>
     </property>
     <property name="bottomMargin">
-     <number>20</number>
+     <number>25</number>
     </property>
     <item>
      <widget class="QLabel" name="titleLabel">
@@ -152,8 +298,8 @@ QProgressBar::chunk {
           <widget class="QTimeEdit" name="timeEdit">
            <property name="minimumSize">
             <size>
-             <width>150</width>
-             <height>35</height>
+             <width>180</width>
+             <height>40</height>
             </size>
            </property>
            <property name="displayFormat">
@@ -185,9 +331,12 @@ QProgressBar::chunk {
           <widget class="QPushButton" name="startButton">
            <property name="minimumSize">
             <size>
-             <width>0</width>
-             <height>35</height>
+             <width>120</width>
+             <height>40</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>開始</string>
@@ -198,9 +347,12 @@ QProgressBar::chunk {
           <widget class="QPushButton" name="pauseButton">
            <property name="minimumSize">
             <size>
-             <width>0</width>
-             <height>35</height>
+             <width>120</width>
+             <height>40</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>暫停</string>
@@ -211,9 +363,12 @@ QProgressBar::chunk {
           <widget class="QPushButton" name="resetButton">
            <property name="minimumSize">
             <size>
-             <width>0</width>
-             <height>35</height>
+             <width>120</width>
+             <height>40</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="text">
             <string>重置</string>
@@ -236,11 +391,17 @@ QProgressBar::chunk {
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>25</height>
+           <height>35</height>
           </size>
          </property>
          <property name="value">
           <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>true</bool>
+         </property>
+         <property name="format">
+          <string>%p%</string>
          </property>
         </widget>
        </item>
@@ -268,7 +429,13 @@ QProgressBar::chunk {
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>100</height>
+           <height>120</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>200</height>
           </size>
          </property>
          <property name="placeholderText">
